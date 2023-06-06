@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class IntegerListImpl implements IntegerList {
 
@@ -142,7 +141,7 @@ public class IntegerListImpl implements IntegerList {
         }
     }
 
-    private void quickSort(Integer[]arr,int begin, int end) {
+    private void quickSort(Integer[] arr, int begin, int end) {
         if (begin < end) {
             int partitionIndex = partition(arr, begin, end);
 
@@ -150,6 +149,7 @@ public class IntegerListImpl implements IntegerList {
             quickSort(arr, partitionIndex + 1, end);
         }
     }
+
     private int partition(Integer[] arr, int begin, int end) {
         int pivot = arr[end];
         int i = (begin - 1);
@@ -165,14 +165,16 @@ public class IntegerListImpl implements IntegerList {
         swapElements(arr, i + 1, end);
         return i + 1;
     }
-    private  void swapElements(Integer[] arr, int i1, int i2) {
+
+    private void swapElements(Integer[] arr, int i1, int i2) {
         int temp = arr[i1];
         arr[i1] = arr[i2];
         arr[i2] = temp;
     }
 
-    private void sort(Integer[] arr) {
-        quickSort(arr,0,arr.length-1);
+    @Override
+    public void sort(Integer[] arr) {
+        quickSort(arr, 0, arr.length - 1);
     }
 
     private boolean binarySearch(Integer[] arr, Integer item) {
@@ -196,6 +198,6 @@ public class IntegerListImpl implements IntegerList {
     }
 
     private void grow() {
-        storage = Arrays.copyOf(storage,size + size / 2);
+        storage = Arrays.copyOf(storage, size + size / 2);
     }
 }
